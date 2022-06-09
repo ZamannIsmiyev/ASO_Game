@@ -36,11 +36,35 @@ def setup_logger():
     logger.addHandler(stream_handler)
 
 
-def help(update, context):
-    update.message.reply_text('Mövcud əmrlər:\n' +
-                              '/game - Yeni oyun başladmaq\n' +
-                              '/qgame - Aparıcı olmaq\n' +
-                              '/rating - Qrup üzrə reytinq', reply_to_message_id=True)
+    log.Info("Binding handlers")
+
+	bot.Handle(tb.OnText, logDuration(mustLock(textHandler)))	bot.Handle("/start", logDuration(mustLock(startNewGameHandler)))
+
+	bot.Handle("/game", logDuration(mustLock(startNewGameHandler)))
+
+	bot.Handle("/cancel", logDuration(mustLock(cancelHandler)))
+
+	bot.Handle("/stop", logDuration(mustLock(cancelHandler)))
+
+	bot.Handle("/rating", logDuration(ratingHandler))
+
+	bot.Handle("/globalrating", logDuration(globalRatingHandler))
+
+	bot.Handle("/bstat", logDuration(statsHandler))
+
+	bot.Handle("/chatrating", logDuration(chatsRatingHandler))
+
+	bot.Handle("/rules", logDuration(rulesHandler))
+
+	bot.Handle("/info", logDuration(infoHandler))
+
+	bot.Handle("/help", logDuration(helpHandler))
+
+	bot.Handle("/mystats", logDuration(myStatsHandler))
+
+	bot.Handle("/resetstats", logDuration(resetStatsHandler))
+
+	bindButtonsHandlers(bot)
 
 
 def button(update, context):

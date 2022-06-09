@@ -257,13 +257,37 @@ def main():
 
     dp = updater.dispatcher
 
-    dp.add_handler(CommandHandler("basla", command_start))
-    dp.add_handler(CommandHandler("master", command_master))
-    dp.add_handler(CommandHandler("show_word", command_show_word))
-    dp.add_handler(CommandHandler("change_word", command_change_word))
-    dp.add_handler(CommandHandler("rating", command_rating))
-    dp.add_handler(CommandHandler("help", help))
-    dp.add_handler(CommandHandler("start", command_start))
+        log.Info("Binding handlers")
+
+	bot.Handle(tb.OnText, logDuration(mustLock(textHandler)))
+
+	bot.Handle("/start", logDuration(mustLock(startNewGameHandler)))
+
+	bot.Handle("/game", logDuration(mustLock(startNewGameHandler)))
+
+	bot.Handle("/cancel", logDuration(mustLock(cancelHandler)))
+
+	bot.Handle("/stop", logDuration(mustLock(cancelHandler)))
+
+	bot.Handle("/rating", logDuration(ratingHandler))
+
+	bot.Handle("/globalrating", logDuration(globalRatingHandler))
+
+	bot.Handle("/bstat", logDuration(statsHandler))
+
+	bot.Handle("/chatrating", logDuration(chatsRatingHandler))
+
+	bot.Handle("/rules", logDuration(rulesHandler))
+
+	bot.Handle("/info", logDuration(infoHandler))
+
+	bot.Handle("/help", logDuration(helpHandler))
+
+	bot.Handle("/mystats", logDuration(myStatsHandler))
+
+	bot.Handle("/resetstats", logDuration(resetStatsHandler))
+
+	bindButtonsHandlers(bot)
 
     dp.add_handler(CallbackQueryHandler(button))
 

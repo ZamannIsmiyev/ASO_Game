@@ -38,8 +38,8 @@ def setup_logger():
 
 def help(update, context):
     update.message.reply_text('Mövcud əmrlər:\n' +
-                              '/basla - Yeni oyun başladmaq\n' +
-                              '/master - Aparıcı olmaq\n' +
+                              '/game - Yeni oyun başladmaq\n' +
+                              '/qgame - Aparıcı olmaq\n' +
                               '/rating - Qrup üzrə reytinq', reply_to_message_id=True)
 
 
@@ -66,10 +66,10 @@ def button(update, context):
 def command_start(update, context: CallbackContext):
     if update.effective_chat.type == "private":
         
-        addme = InlineKeyboardButton(text="🤓 Məni Guruonuza Əlavə Edin", url="https://t.me/BSsozoyunbot?startgroup=a")
-        sohbet = InlineKeyboardButton(text="⚕️ Support", url="https://t.me/BLACK_MMC")
-        oyun = InlineKeyboardButton(text="🐈 Söhbət Gurupmuz", url="https://t.me/Cat_House_Gurups")
-        admin = InlineKeyboardButton(text="👨🏻‍💻 Sahib", url="https://t.me/F_r_o_z_e_d_i")
+        addme = InlineKeyboardButton(text="🤓 Məni Guruonuza Əlavə Edin", url="https://t.me/qafqazcrobot?startgroup=a")
+        sohbet = InlineKeyboardButton(text="⚕️ Support", url="https://t.me/RiyaddBlog")
+        oyun = InlineKeyboardButton(text="🐈 Söhbət Gurupmuz", url="https://t.me/Azeqafqaz2021")
+        admin = InlineKeyboardButton(text="👨🏻‍💻 Sahib", url="https://t.me/azzardi")
 
         keyboard = [[addme],[sohbet],[oyun],[admin]]
         reply_markup = InlineKeyboardMarkup(keyboard)
